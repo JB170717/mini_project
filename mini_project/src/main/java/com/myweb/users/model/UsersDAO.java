@@ -81,6 +81,7 @@ public class UsersDAO {
 		try {
 			conn=dataSource.getConnection();
 			pstmt=conn.prepareStatement(sql);
+			
 			pstmt.setString(1, dto.getEmail());
 			pstmt.setString(2, dto.getName());
 			pstmt.setString(3, dto.getPw());
@@ -89,8 +90,7 @@ public class UsersDAO {
 			pstmt.setString(6, dto.getSnsYn());
 			
 			pstmt.executeUpdate();// insert, update, delete는 executeUpdate
-			
-			
+						
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
