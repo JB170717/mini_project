@@ -1,0 +1,28 @@
+/target/
+
+// .gitignore 파일 내용
+// Eclipse
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.classpath
+.project
+
+// 컴파일된 클래스 파일
+*.class
+
+// 로그 파일
+*.log
+logs/
+
+// 빌드 폴더
+build/
+out/
