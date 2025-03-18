@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.model.UserMapper">
+
+	<insert id="regist" parameterType="com.blog.model.UserDTO"> 
+    	INSERT INTO USERS(USER_ID, EMAIL, PASSWORD, GENDER, NICKNAME, PROFILE_IMAGE, AGE)
+    	VALUES(USER_ID.NEXTVAL, #{email}, #{password}, #{gender}, #{nickname}, NULL, #{age})
+	</insert>
+	
+	<select id="login" parameterType="map" resultType="com.blog.model.UserDTO">
+    	SELECT * FROM USERS
+    	WHERE EMAIL = #{email} AND PASSWORD = #{password}
+	</select>
+
+
+</mapper>
+
+
+
+

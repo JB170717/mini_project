@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.model.UserMapper">
+
+	<insert id="regist" parameterType="com.blog.model.UserDTO"> 
+    	INSERT INTO USERS(USER_ID, EMAIL, PASSWORD, GENDER, NICKNAME, PROFILE_IMAGE, AGE, INTRODUCTION)
+    	VALUES(USER_ID.NEXTVAL, #{email}, #{password}, #{gender}, #{nickname}, NULL, #{age}, #{introduction})
+	</insert>
+	
+	<select id="login" parameterType="map" resultType="com.blog.model.UserDTO">
+    	SELECT * FROM USERS
+    	WHERE EMAIL = #{email} AND PASSWORD = #{password}
+	</select>
+	
+	<update id="updateProfileImage" parameterType="com.blog.model.UserDTO">
+    	UPDATE USERS SET PROFILE_IMAGE = #{profileImage} 
+    	WHERE EMAIL = #{email}
+	</update>
+	
+	<update id="updateProfile" parameterType="map">
+    	UPDATE USERS 
+    	SET NICKNAME = #{nickname},
+        	INTRODUCTION = #{bio,jdbcType=VARCHAR} 
+    	WHERE EMAIL = #{email}
+	</update>
+	
+	<select id="getUserByEmail" parameterType="string" resultType="com.blog.model.UserDTO">
+	    SELECT * FROM USERS WHERE EMAIL = #{email}
+	</select>
+	
+	<delete id="deleteUser" parameterType="string">
+	    DELETE FROM USERS WHERE EMAIL = #{email,jdbcType=VARCHAR}
+	</delete>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="changePassword" parameterType="map">
+	  UPDATE USERS 
+	  SET PASSWORD = #{password}
+	  WHERE EMAIL = #{email}
+	</update>
+
+
+
+</mapper>
+
+
+
+
